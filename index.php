@@ -7,8 +7,7 @@ $connect = mysqli_connect(
     'lamp_demo'
 );
 
-$query = 'SELECT *
-    FROM blog';
+$query = 'SELECT * FROM blog';
 $result = mysqli_query($connect, $query);
 
 echo '<h1>MySQL Content:</h1>';
