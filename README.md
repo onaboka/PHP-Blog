@@ -18,18 +18,20 @@ services:
       - "./db:/docker-entrypoint-initdb.d"
     networks:
       - lamp-docker
+
   www:
     depends_on:
       - db
-    image: php:8.1.1-apache
+    build:
+      context: .
+      dockerfile: Dockerfile  # Use Dockerfile for install extensions
     volumes:
       - "./:/var/www/html"
     ports:
-      - 80:80
-      - 443:443
+      - 8013:80
     networks:
       - lamp-docker
-    command: "/bin/sh -c 'docker-php-ext-install mysqli && exec apache2-foreground'"
+
   phpmyadmin:
     depends_on:
       - db
@@ -41,6 +43,7 @@ services:
       - PMA_PORT=3306
     networks:
       - lamp-docker
+
 networks:
   lamp-docker:
     driver: bridge

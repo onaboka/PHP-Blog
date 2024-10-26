@@ -1,7 +1,7 @@
 <?php
 
 $connect = mysqli_connect(
-    'laravel-db-1',
+    'php-blog-db-1',
     'lamp_demo',
     'password',
     'lamp_demo'
@@ -18,5 +18,4 @@ while($record = mysqli_fetch_assoc($result))
     echo '<h2>'.$record['title'].'</h2>';
     echo '<hr>';
 }
-
 ?>
